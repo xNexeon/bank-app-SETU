@@ -6,7 +6,7 @@ class AccountHandler {
                     if (array[2] is Int && (array[2] as Int) >= 18){
                         if (array[3] is String && (array[3] as String).length >= 4){
                             if (array[4] is String && (array[4] as String).length >= 8){
-                                addUser()
+                                println("Valid account entered!! ")
                             } else {
                                 println("Password must contain at least 8 characters, one capital letter, and 2 numbers")
                             }
@@ -14,7 +14,7 @@ class AccountHandler {
                             println("City name is too short")
                         }
                     } else {
-                        println("[You have to be above the age of 18 to register]")
+                        println("[You have to be 18 or older to register]")
                     }
                 } else {
                     println("[Second name is too short]")

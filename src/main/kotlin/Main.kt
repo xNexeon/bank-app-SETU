@@ -43,6 +43,9 @@ class BankApp {
         // Creates array with firstName, lastName, age, city, password
         val registerDetails = bankScreens.registerScreen()
 
+        val accountHandler0 = AccountHandler()
+        accountHandler0.tryRegister(registerDetails)
+
     }
 
 }

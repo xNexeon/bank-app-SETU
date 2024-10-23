@@ -1,7 +1,7 @@
 class Screens{
-    var bankName = "Bank Of SETU"
+    private var bankName = "Bank Of SETU"
 
-    fun clearScreen() {
+    private fun clearScreen() {
         for (i in 1..20) {
             println()
         }
@@ -67,7 +67,9 @@ class Screens{
         val lastName = readlnOrNull() ?: ""
 
         print("Age: ")
-        val age = readlnOrNull() ?: 0
+        val ageInput = readlnOrNull() ?: ""
+        val age = ageInput.toIntOrNull() ?: 0
+
 
         print("City: ")
         val city = readlnOrNull() ?: ""
@@ -75,6 +77,8 @@ class Screens{
         print("Password: ")
         val password = readlnOrNull() ?: ""
         println("####################################")
+
+
 
         return arrayOf(firstName, lastName, age, city, password)
     }
