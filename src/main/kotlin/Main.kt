@@ -13,9 +13,11 @@ class BankApp {
         init()
     }
 
+    // Initializes the app after entry point
     private fun init() {
-        var selection: Int
 
+        // Until a number of 0 - 2 is entered, it will keep running initScreen()
+        var selection: Int
         do {
             selection = bankScreens.initScreen()
 
@@ -26,6 +28,7 @@ class BankApp {
         } while (selection !in 0..2)
     }
 
+    // Takes an integer of "i" and runs the relative functions
     private fun initHandler(i: Int) {
         when (i) {
             1 -> initLogin()
@@ -43,8 +46,13 @@ class BankApp {
         // Creates array with firstName, lastName, age, city, password
         val registerDetails = bankScreens.registerScreen()
 
+        // Creates an AccountHandler object in order to use its methods
         val accountHandler0 = AccountHandler()
-        accountHandler0.tryRegister(registerDetails)
+        val validAccount: Boolean = accountHandler0.validateRegister(registerDetails)
+
+        if (validAccount) {
+            accountHandler0.createUser(registerDetails)
+        }
 
     }
 
