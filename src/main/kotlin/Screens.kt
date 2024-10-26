@@ -55,7 +55,7 @@ class Screens{
         clearScreen()
         val registerScreenText = """
             ########### $bankName ###########
-            #            Register               #
+            #            Register              #
             ####################################
         """.trimIndent()
         println(registerScreenText)
@@ -70,7 +70,6 @@ class Screens{
         val ageInput = readlnOrNull() ?: ""
         val age = ageInput.toIntOrNull() ?: 0
 
-
         print("City: ")
         val city = readlnOrNull() ?: ""
 
@@ -78,8 +77,27 @@ class Screens{
         val password = readlnOrNull() ?: ""
         println("####################################")
 
-
-
         return arrayOf(firstName, lastName, age, city, password)
+    }
+
+    fun bankAppScreen(currentUser: User) {
+        clearScreen()
+        val bankAppScreenText = """
+            ########### $bankName ###########
+            #                                  #
+            #         Welcome ${currentUser.firstName.replaceFirstChar { it.uppercase() }}        #
+            ####################################
+            #  Please select an option:        #
+            ------------------------------------
+            #   [1]: Check Balance             #
+            #   [2]: Deposit                   #
+            #   [3]: Withdraw
+            #   [0]: Exit                      #
+            ------------------------------------
+            ####################################
+            Selection: 
+        """.trimIndent()
+
+        println(bankAppScreenText)
     }
 }

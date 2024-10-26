@@ -7,6 +7,8 @@ fun main() {
 class BankApp {
     // Init Variables
     private val bankScreens = Screens()
+    private val accountHandler0 = AccountHandler()
+    private var currentUser: User? = null
 
     // Entry point for BankApp
     fun run() {
@@ -46,12 +48,13 @@ class BankApp {
         // Creates array with firstName, lastName, age, city, password
         val registerDetails = bankScreens.registerScreen()
 
-        // Creates an AccountHandler object in order to use its methods
-        val accountHandler0 = AccountHandler()
         val validAccount: Boolean = accountHandler0.validateRegister(registerDetails)
 
         if (validAccount) {
-            accountHandler0.createUser(registerDetails)
+            val user0 = accountHandler0.createUser(registerDetails)
+            accountHandler0.userList.add(user0)
+            currentUser = user0
+            bankScreens.bankAppScreen(user0)
         }
 
     }

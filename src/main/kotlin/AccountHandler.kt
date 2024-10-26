@@ -1,5 +1,7 @@
 class AccountHandler {
 
+    val userList = ArrayList<User>()
+
     // Nested if statements which return a boolean based on whether each
     // slot in the provided array has the correct length and data type
     //
@@ -37,7 +39,7 @@ class AccountHandler {
 
     // Takes in an array of "any" type and creates a User object with the relevant
     // variables lowercased for easier manipulation down the line
-    fun createUser(array: Array<Any>) {
+    fun createUser(array: Array<Any>): User {
         val user = User(
             firstName = (array[0] as String).lowercase(),
             lastName = (array[1] as String).lowercase(),
@@ -46,20 +48,12 @@ class AccountHandler {
             password = array[4] as String,
             bankId = 1
         )
-
-        println(user.toString())
+        return user
     }
 
 
+
     fun tryLogin(array: Array<Any>){
-        if (array.isNotEmpty()){
-            if (array[0] is String && (array[0] as String).length >= 3){
-                
-            } else {
-                println("")
-            }
-        } else {
-            println("[Array is empty]")
-        }
+        println("tryLogin()")
     }
 }
