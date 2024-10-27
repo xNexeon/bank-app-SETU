@@ -80,7 +80,7 @@ class Screens{
         return arrayOf(firstName, lastName, age, city, password)
     }
 
-    fun bankAppScreen(currentUser: User) {
+    fun bankAppScreen(currentUser: User): Int {
         clearScreen()
         val bankAppScreenText = """
             ########### $bankName ###########
@@ -91,7 +91,8 @@ class Screens{
             ------------------------------------
             #   [1]: Check Balance             #
             #   [2]: Deposit                   #
-            #   [3]: Withdraw
+            #   [3]: Withdraw                  #
+            #   [4]: Account Details           #
             #   [0]: Exit                      #
             ------------------------------------
             ####################################
@@ -99,5 +100,8 @@ class Screens{
         """.trimIndent()
 
         println(bankAppScreenText)
+
+        val selection = readln()
+        return selection.toInt()
     }
 }

@@ -8,7 +8,7 @@ class BankApp {
     // Init Variables
     private val bankScreens = Screens()
     private val accountHandler0 = AccountHandler()
-    private var currentUser: User? = null
+    private lateinit var currentUser: User
 
     // Entry point for BankApp
     fun run() {
@@ -54,9 +54,27 @@ class BankApp {
             val user0 = accountHandler0.createUser(registerDetails)
             accountHandler0.userList.add(user0)
             currentUser = user0
-            bankScreens.bankAppScreen(user0)
+            runBank()
         }
 
     }
+
+    private fun runBank() {
+
+
+        // Until a number of 0 - 2 is entered, it will keep running initScreen()
+        var selection: Int
+        do {
+            selection = bankScreens.bankAppScreen(currentUser)
+
+            when (selection) {
+                1 -> println(1)
+                2 -> println(2)
+                3 -> println(3)
+                4 -> println(4)
+            }
+        } while (selection !in 0..4)
+    }
+
 
 }
