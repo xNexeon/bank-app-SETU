@@ -1,0 +1,10 @@
+<list>
+  <user>
+    <firstName>niko</firstName>
+    <lastName>wisniewski</lastName>
+    <age>22</age>
+    <city>waterford</city>
+    <password>nikodem2002</password>
+    <bankId>1</bankId>
+  </user>
+</list>
