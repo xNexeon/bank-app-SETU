@@ -1,4 +1,4 @@
-class Screens{
+class Screens {
     private var bankName = "Bank Of SETU"
 
     private fun clearScreen() {

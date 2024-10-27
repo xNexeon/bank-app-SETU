@@ -1,7 +1,6 @@
 import com.thoughtworks.xstream.XStream
 import java.io.File
 import java.io.FileWriter
-import com.thoughtworks.xstream.security.WildcardTypePermission
 
 
 class AccountHandler {
@@ -93,8 +92,6 @@ class AccountHandler {
             println("Error loading file")
         }
     }
-
-
 
 
 }
