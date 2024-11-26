@@ -12,6 +12,8 @@ class AccountHandler {
     //
     // If user inputs wrong data type, it will still throw the relevant
     // error message
+    // It will keep asking user for input even if its invalid, and will print
+    // the relevant error AFTER the user filled in ALL details
     fun validateRegister(array: Array<Any>): Boolean {
         if (array.isNotEmpty()) {
             if (array[0] is String && (array[0] as String).length >= 3) {
@@ -45,13 +47,16 @@ class AccountHandler {
     // Takes in an array of "any" type and creates a User object with the relevant
     // variables lowercased for easier manipulation down the line
     fun createUser(array: Array<Any>): User {
+        // Find next bankId
+        val nextBankId = userList.maxOfOrNull { it.bankId }?.plus(1) ?: 1 // If userList is empty, start with 1
+
         val user = User(
             firstName = (array[0] as String).lowercase(),
             lastName = (array[1] as String).lowercase(),
             age = array[2] as Int,
             city = (array[3] as String).lowercase(),
             password = array[4] as String,
-            bankId = 1
+            bankId = nextBankId
         )
         return user
     }
@@ -67,31 +72,36 @@ class AccountHandler {
         }
     }
 
+    // Function to load users (absolute pain)
     fun loadUsers(filePath: String) {
-        val xstream = XStream()
-        xstream.alias("user", User::class.java)
-
-        // Allow the User class for deserialization
-        //xstream.addPermission(WildcardTypePermission("com.yourpackage.User")) // Replace with your actual package name
-
-        val xmlFile = File(filePath)
-
-        if (xmlFile.exists() && xmlFile.canRead()) {
-            // Use a safe cast with 'as?' and handle the null case
-            val loadedUsers = xstream.fromXML(xmlFile) as? List<*>
-
-            if (loadedUsers != null) {
-                userList.clear()
-                // Filter the loaded users to ensure they are of type User
-                loadedUsers.filterIsInstance<User>().let { userList.addAll(it) }
-                println("Loaded ${userList.size} users")
-            } else {
-                println("Error: Loaded data is not a valid list.")
-            }
-        } else {
-            println("Error loading file")
+        //Initialize xstream
+        val xstream = XStream().apply {
+            alias("user", User::class.java)
+            allowTypes(arrayOf(User::class.java)) // XML file will not load without this line
         }
+
+
+        val xmlFile = File(filePath) // Creates a File object which will point to xml file at the filepath
+        if (!xmlFile.exists() && !xmlFile.canRead()) { //Checks if the file exists and if it is readable by xstream
+            println("Error: File does not exist or cannot be read.")
+            return
+        }
+
+        //Converts XML content into an object readable by kotlin
+        val loadedUsers = xstream.fromXML(xmlFile) as? List<User> ?: run { // can be null, in which case you have to sign up to generate users.xml
+            println("Error: Loaded data is not a valid list.")
+            return
+        }
+
+        userList.apply {
+            clear()
+            addAll(loadedUsers)
+        }
+
+        println("Loaded ${userList.size} users")
     }
+
+
 
 
 }
