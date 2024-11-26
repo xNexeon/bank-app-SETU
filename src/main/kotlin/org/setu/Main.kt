@@ -8,6 +8,8 @@ class BankApp {
 
 
     // Init Variables
+    val filePath = "users.xml"
+
     private val bankScreens = Screens()
     private val accountHandler0 = AccountHandler()
     private lateinit var currentUser: User
@@ -19,6 +21,8 @@ class BankApp {
 
     // Initializes the app after entry point
     private fun init() {
+        // Load users from the file at the start
+        accountHandler0.loadUsers(filePath)
 
         // Until a number of 0 - 2 is entered, it will keep running initScreen()
         var selection: Int
@@ -43,7 +47,10 @@ class BankApp {
     private fun initLogin() {
         // Creates array with userId, password
         val loginDetails = bankScreens.loginScreen()
+        val userId = loginDetails[0] as String
+        val password = loginDetails[1] as String
 
+        val matchingUser = accountHandler0.userList.find { it.firstName == userId }
     }
 
     private fun initRegister() {
@@ -56,7 +63,8 @@ class BankApp {
             val user0 = accountHandler0.createUser(registerDetails)
             accountHandler0.userList.add(user0)
             currentUser = user0
-            accountHandler0.saveUsers("users.xml")
+            accountHandler0.saveUsers(filePath)
+            println("Logging in")
             runBank()
         }
 

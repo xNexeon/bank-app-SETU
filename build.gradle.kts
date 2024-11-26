@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.thoughtworks.xstream:xstream:1.4.20") // Add XStream dependency
+    implementation("com.thoughtworks.xstream:xstream:1.4.21") // Add XStream dependency
     testImplementation(kotlin("test"))
 }
 
