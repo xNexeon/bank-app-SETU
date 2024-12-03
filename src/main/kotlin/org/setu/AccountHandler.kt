@@ -11,7 +11,7 @@ class AccountHandler {
     // slot in the provided array has the correct length and data type
     //
     // If user inputs wrong data type, it will still throw the relevant
-    // error message
+    // error message as it's casted as a String
     // It will keep asking user for input even if its invalid, and will print
     // the relevant error AFTER the user filled in ALL details
     fun validateRegister(array: Array<Any>): Boolean {
@@ -93,9 +93,9 @@ class AccountHandler {
             return
         }
 
-        userList.apply {
-            clear()
-            addAll(loadedUsers)
+        userList.apply { // runs the block of code on the object it is called from
+            clear() //clears all elements from userList
+            addAll(loadedUsers) // adds all elements from loadedUsers to the now empty userList
         }
 
         println("Loaded ${userList.size} users")
