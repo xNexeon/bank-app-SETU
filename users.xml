@@ -15,4 +15,12 @@
     <password>jamesjames333</password>
     <bankId>2</bankId>
   </user>
+  <user>
+    <firstName>billy</firstName>
+    <lastName>ward</lastName>
+    <age>30</age>
+    <city>dublin</city>
+    <password>jameswalker123</password>
+    <bankId>3</bankId>
+  </user>
 </list>

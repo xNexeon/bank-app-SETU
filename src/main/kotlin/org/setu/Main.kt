@@ -45,12 +45,26 @@ class BankApp {
     }
 
     private fun initLogin() {
-        // Creates array with userId, password
-        val loginDetails = bankScreens.loginScreen()
-        val userId = loginDetails[0] as String
+        // Prompt user for user ID and password
+        val loginDetails = bankScreens.loginScreen() // Assuming this returns an array with userId and password
+        val userId = loginDetails[0] // Convert userId to Int
         val password = loginDetails[1] as String
 
-        val matchingUser = accountHandler0.userList.find { it.firstName == userId }
+        // Check if userId is valid
+        val user = accountHandler0.userList.find { it.bankId == userId }
+
+        if (user != null) {
+            // Check if password matches said user
+            if (user.password == password) {
+                currentUser  = user // Sets the current user
+                println("Login successful! Welcome, ${user.firstName}.")
+                runBank() // Run the bank after setting current user to corresponding user
+            } else {
+                println("Incorrect password. Please try again.")
+            }
+        } else {
+            println("User  ID not found. Please try again.")
+        }
     }
 
     private fun initRegister() {
