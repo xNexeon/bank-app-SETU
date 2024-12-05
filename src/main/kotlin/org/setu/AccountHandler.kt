@@ -8,7 +8,7 @@ class AccountHandler {
     val userList = ArrayList<User>()
 
     // Nested if statements which return a boolean based on whether each
-    // slot in the provided array has the correct length and data type
+    //slot in the provided array has the correct length and data type
     //
     // If user inputs wrong data type, it will still throw the relevant
     // error message as it's casted as a String

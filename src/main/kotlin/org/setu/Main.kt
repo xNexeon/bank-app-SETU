@@ -7,7 +7,7 @@ fun main() {
 class BankApp {
 
 
-    // Init Variables
+    // Initial  Variables
     private val filePath = "users.xml"
 
     private val bankScreens = Screens()

@@ -1,3 +1,7 @@
+// All screen string prints and selection in this file
+//
+// This abstracts code so that it cleans up rest of code elsewhere
+
 class Screens {
     private var bankName = "Bank Of SETU"
 
