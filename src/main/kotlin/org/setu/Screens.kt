@@ -136,7 +136,7 @@ class Screens {
             #         Welcome ${currentUser.firstName.replaceFirstChar { it.uppercase() }}        #
             ####################################
             How much would you like to Withdraw:     
-            [Current balance]:  ${currentUser.balance.toInt()}
+            [Current balance]:  ${currentUser.balance}
    
             Enter an amount: 
         """.trimIndent()
