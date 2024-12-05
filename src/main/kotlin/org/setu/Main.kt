@@ -80,6 +80,8 @@ class BankApp {
             accountHandler0.saveUsers(filePath)
             println("Logging in")
             runBank()
+        } else {
+            initRegister()
         }
 
     }
@@ -92,10 +94,10 @@ class BankApp {
             selection = bankScreens.bankAppScreen(currentUser)
 
             when (selection) {
-                1 -> showBalance()
+                1 -> showBalance() //show balance
                 2 -> handleDeposit() //Deposit
-                3 -> println(3)
-                4 -> println(4)
+                3 -> handleWithdraw() // withdraw
+                4 -> handleShowAccountDetails() // account details
             }
         } while (selection !in 0..4)
     }
@@ -118,10 +120,31 @@ class BankApp {
             handleDeposit()
         }
     }
+
+    private fun handleWithdraw() {
+        val amount = bankScreens.withdrawScreen(currentUser)
+
+        if (amount > 0) {
+            currentUser.balance -= amount
+            println("Successfully withdrawed \$${amount}.")
+
+            accountHandler0.saveUsers(filePath)
+
+            runBank()
+        } else {
+            println("Invalid withdraw amount. Please enter a positive number.")
+            handleWithdraw()
+        }
+    }
+
     private fun showBalance() {
         println("Your current balance is: \$${currentUser.balance}")
         runBank()
     }
 
+    private fun handleShowAccountDetails() {
+        println(currentUser)
+        runBank()
+    }
 
 }

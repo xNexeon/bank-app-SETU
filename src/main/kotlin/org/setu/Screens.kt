@@ -116,12 +116,32 @@ class Screens {
             #                                  #
             #         Welcome ${currentUser.firstName.replaceFirstChar { it.uppercase() }}        #
             ####################################
-            How much would you like to deposit:        
+            How much would you like to deposit:    
+            [Current balance]:  ${currentUser.balance}
    
             Enter an amount: 
         """.trimIndent()
 
         println(depositScreenText)
+
+        val amount = readln()
+        return amount.toInt()
+    }
+
+    fun withdrawScreen(currentUser: User): Int {
+        clearScreen()
+        val withdrawScreenText = """
+            ########### $bankName ###########
+            #                                  #
+            #         Welcome ${currentUser.firstName.replaceFirstChar { it.uppercase() }}        #
+            ####################################
+            How much would you like to Withdraw:     
+            [Current balance]:  ${currentUser.balance}
+   
+            Enter an amount: 
+        """.trimIndent()
+
+        println(withdrawScreenText)
 
         val amount = readln()
         return amount.toInt()
