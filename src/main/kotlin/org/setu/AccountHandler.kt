@@ -56,7 +56,8 @@ class AccountHandler {
             age = array[2] as Int,
             city = (array[3] as String).lowercase(),
             password = array[4] as String,
-            bankId = nextBankId
+            bankId = nextBankId,
+            balance = 0
         )
         return user
     }
@@ -100,7 +101,6 @@ class AccountHandler {
 
         println("Loaded ${userList.size} users")
     }
-
 
 
 

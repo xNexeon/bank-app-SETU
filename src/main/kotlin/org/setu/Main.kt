@@ -8,7 +8,7 @@ class BankApp {
 
 
     // Init Variables
-    val filePath = "users.xml"
+    private val filePath = "users.xml"
 
     private val bankScreens = Screens()
     private val accountHandler0 = AccountHandler()
@@ -30,8 +30,8 @@ class BankApp {
             selection = bankScreens.initScreen()
 
             when (selection) {
-                1 -> initHandler(1)
-                2 -> initHandler(2)
+                1 -> initHandler(1) // login
+                2 -> initHandler(2) // register
             }
         } while (selection !in 0..2)
     }
@@ -86,18 +86,41 @@ class BankApp {
 
     private fun runBank() {
 
-        // Until a number of 0 - 2 is entered, it will keep running bankAppScreen()
+        // Until a number of 0 - 4 is entered, it will keep running bankAppScreen()
         var selection: Int
         do {
             selection = bankScreens.bankAppScreen(currentUser)
 
             when (selection) {
-                1 -> println(1)
-                2 -> println(2)
+                1 -> showBalance()
+                2 -> handleDeposit() //Deposit
                 3 -> println(3)
                 4 -> println(4)
             }
         } while (selection !in 0..4)
+    }
+
+    private fun handleDeposit() {
+        // Get the deposit amount from the deposit screen
+        val amount = bankScreens.depositScreen(currentUser)
+
+        // Ensure amount is more than zero
+        if (amount > 0) {
+            currentUser.balance += amount
+            println("Successfully deposited \$${amount}. Your new balance is: \$${currentUser.balance}.")
+
+            // Save the updated balance to xml file
+            accountHandler0.saveUsers(filePath)
+
+            runBank()
+        } else {
+            println("Invalid deposit amount. Please enter a positive number.")
+            handleDeposit()
+        }
+    }
+    private fun showBalance() {
+        println("Your current balance is: \$${currentUser.balance}")
+        runBank()
     }
 
 
