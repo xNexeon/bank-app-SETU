@@ -6,7 +6,7 @@
     <city>waterford</city>
     <password>Nikodem2002</password>
     <bankId>1</bankId>
-    <balance>500</balance>
+    <balance>475</balance>
   </user>
   <user>
     <firstName>josh</firstName>
@@ -15,6 +15,16 @@
     <city>limerick</city>
     <password>nikodem2002</password>
     <bankId>2</bankId>
+    <balance>1000</balance>
+  </user>
+  <user>
+    <firstName>admin</firstName>
+    <lastName>admin</lastName>
+    <age>999</age>
+    <city>administrator</city>
+    <password>Nikodem2002</password>
+    <bankId>3</bankId>
     <balance>0</balance>
+    <accountType>Standard</accountType>
   </user>
 </list>

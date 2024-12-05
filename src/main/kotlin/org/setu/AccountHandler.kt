@@ -57,7 +57,8 @@ class AccountHandler {
             city = (array[3] as String).lowercase(),
             password = array[4] as String,
             bankId = nextBankId,
-            balance = 0
+            balance = 0,
+            accountType = "Standard"
         )
         return user
     }
@@ -101,7 +102,6 @@ class AccountHandler {
 
         println("Loaded ${userList.size} users")
     }
-
 
 
 }
