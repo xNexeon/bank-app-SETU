@@ -4,5 +4,6 @@ data class User(
     var age: Int,
     var city: String,
     var password: String,
-    var bankId: Int
+    var bankId: Int,
+    var balance: Int
 )

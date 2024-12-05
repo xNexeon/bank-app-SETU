@@ -1,3 +1,7 @@
+// All screen string prints and selection in this file
+//
+// This abstracts code so that it cleans up rest of code elsewhere
+
 class Screens {
     private var bankName = "Bank Of SETU"
 
@@ -103,5 +107,23 @@ class Screens {
 
         val selection = readln()
         return selection.toInt()
+    }
+
+    fun depositScreen(currentUser: User): Int {
+        clearScreen()
+        val depositScreenText = """
+            ########### $bankName ###########
+            #                                  #
+            #         Welcome ${currentUser.firstName.replaceFirstChar { it.uppercase() }}        #
+            ####################################
+            How much would you like to deposit:        
+   
+            Enter an amount: 
+        """.trimIndent()
+
+        println(depositScreenText)
+
+        val amount = readln()
+        return amount.toInt()
     }
 }
