@@ -146,4 +146,33 @@ class Screens {
         val amount = readln()
         return amount.toInt()
     }
+
+
+
+    //new admin screen
+    fun adminScreen(): Int {
+        clearScreen()
+        val adminScreenText = """
+            ########### $bankName ###########
+            ######[Administrator Panel]#########
+            #                                  #
+            ####################################
+            #  Please select an option:        #
+            ------------------------------------
+            #   [1]: List total users          #
+            #   [2]: Search User by name       #
+            #   [3]: Add a User                #
+            #   [4]: Remove a User             #
+            #   [5]: Update a user             #
+            #   [0]: Exit                      # 
+            ------------------------------------
+            ####################################
+            Selection: 
+        """.trimIndent()
+
+        println(adminScreenText)
+
+        val selection = readln()
+        return selection.toInt()
+    }
 }

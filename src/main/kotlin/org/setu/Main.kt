@@ -1,3 +1,5 @@
+import org.setu.AdministratorPanel
+
 fun main() {
     val bank0 = BankApp()
     bank0.run()
@@ -11,8 +13,10 @@ class BankApp {
     private val filePath = "users.xml"
 
     private val bankScreens = Screens()
+    private val admin = AdministratorPanel()
     private val accountHandler0 = AccountHandler()
     private lateinit var currentUser: User
+
 
     // Entry point for BankApp
     fun run() {
@@ -58,7 +62,15 @@ class BankApp {
             if (user.password == password) {
                 currentUser  = user // Sets the current user
                 println("Login successful! Welcome, ${user.firstName}.")
-                runBank() // Run the bank after setting current user to corresponding user
+
+
+                //Check currentUser account type and run corresponding menu
+                if (currentUser.accountType == "Standard") {
+                    runBank()
+                } else if (currentUser.accountType == "Admin") {
+                   admin.runAdminPanel()
+                }
+                // Run the bank after setting current user to corresponding user
             } else {
                 println("Incorrect password. Please try again.")
             }

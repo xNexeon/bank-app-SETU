@@ -79,7 +79,7 @@ class AccountHandler {
         //Initialize xstream
         val xstream = XStream().apply {
             alias("user", User::class.java)
-            allowTypes(arrayOf(User::class.java)) // XML file will not load without this line
+            allowTypes(arrayOf(User::class.java)) //XML file will not load without this line
         }
 
 
