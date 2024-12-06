@@ -25,6 +25,6 @@
     <password>Nikodem2002</password>
     <bankId>3</bankId>
     <balance>0</balance>
-    <accountType>Standard</accountType>
+    <accountType>Admin</accountType>
   </user>
 </list>
