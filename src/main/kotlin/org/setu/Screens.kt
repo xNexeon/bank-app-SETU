@@ -149,6 +149,7 @@ class Screens {
 
 
 
+    //new admin screen
     fun adminScreen(): Int {
         clearScreen()
         val adminScreenText = """
@@ -163,7 +164,7 @@ class Screens {
             #   [3]: Add a User                #
             #   [4]: Remove a User             #
             #   [5]: Update a user             #
-            #   [0]: Exit                      #
+            #   [0]: Exit                      # 
             ------------------------------------
             ####################################
             Selection: 

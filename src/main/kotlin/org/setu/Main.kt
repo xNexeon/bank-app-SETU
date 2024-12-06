@@ -64,7 +64,7 @@ class BankApp {
                 println("Login successful! Welcome, ${user.firstName}.")
 
 
-                // Check currentUser account type and run corresponding menu
+                //Check currentUser account type and run corresponding menu
                 if (currentUser.accountType == "Standard") {
                     runBank()
                 } else if (currentUser.accountType == "Admin") {
