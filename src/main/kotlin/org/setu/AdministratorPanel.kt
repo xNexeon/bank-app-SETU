@@ -77,20 +77,41 @@ class AdministratorPanel {
     }
 
     private fun addUserInitialize() {
+        var userType = ""
+
         println("""
             Select user type to add:
-            [1]: Customer
-            [2]: Employee
-            [3]: Administrator
+            [1]: Customer/Standard
+            [2]: Administrator
         """.trimIndent())
 
         val selection = readln().toInt()
 
-        when (selection) {
-            1 -> println() // add customer
-            2 -> println() // add employee
-            3 -> println() // add admin
+        if (selection == 1) { // customer
+            userType = "Standard"
+        } else if (selection == 2) { // admin
+            userType = "Admin"
+        } else {
+            println("Invalid section, please try again")
+            addUserInitialize()
         }
+
+        val registerDetails = bankScreens.registerScreen()
+
+        if (userType == "Standard") {
+            registerDetails[2]
+        }
+
+        val validAccount: Boolean = accountHandler0.validateRegister(registerDetails)
+
+        if (validAccount) {
+            val user0 = accountHandler0.createUser(registerDetails)
+            accountHandler0.userList.add(user0)
+            accountHandler0.saveUsers(filePath)
+            println("Logging in")
+        }
+
+
     }
 
 

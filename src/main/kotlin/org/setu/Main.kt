@@ -71,7 +71,6 @@ class BankApp {
                 } else if (currentUser.accountType == "Admin") {
                    admin.runAdminPanel()
                 }
-                // Run the bank after setting current user to corresponding user
             } else {
                 println("Incorrect password. Please try again.")
             }

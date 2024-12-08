@@ -29,4 +29,14 @@
     <balance>0</balance>
     <accountType>Admin</accountType>
   </user>
+  <user>
+    <firstName>tester</firstName>
+    <lastName>tester</lastName>
+    <age>100</age>
+    <city>tester</city>
+    <password>Nikodem2002</password>
+    <bankId>4</bankId>
+    <balance>0</balance>
+    <accountType>Standard</accountType>
+  </user>
 </list>
