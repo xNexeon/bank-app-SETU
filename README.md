@@ -28,7 +28,7 @@ Setu Bank App is a Kotlin-based banking system that mimics basic functionalities
 - **BankApp**: Entry point for the app, groups user interactions and banking features.
 - **AccountHandler**: Manages user data, validation, registration, persistence, etc.
 - **Screens**: Manages user screens (mainly to keep the rest of the files clean).
-- **User **: Represents the user data model with variables such as age, balance, and account type.
+- **User**: Represents the user data model with variables such as age, balance, and account type.
 
 ## Usage
 
