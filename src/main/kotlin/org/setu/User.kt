@@ -18,6 +18,7 @@ data class User(
         City: $city
         Bank ID: $bankId
         Balance: $balance
+        Account Type: $accountType
     """.trimIndent()
     }
 }

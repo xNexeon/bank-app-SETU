@@ -11,6 +11,8 @@ class Screens {
         }
     }
 
+    // ################################ General Bank Screens ##########################################
+
     fun initScreen(): Int {
         clearScreen()
 
@@ -149,7 +151,7 @@ class Screens {
 
 
 
-    //new admin screen
+    // ################################ Administrator Screens ##########################################
     fun adminScreen(): Int {
         clearScreen()
         val adminScreenText = """

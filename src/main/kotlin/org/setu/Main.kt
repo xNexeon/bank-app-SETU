@@ -1,4 +1,5 @@
 import org.setu.AdministratorPanel
+import kotlin.math.log
 
 fun main() {
     val bank0 = BankApp()
@@ -50,8 +51,8 @@ class BankApp {
 
     private fun initLogin() {
         // Prompt user for user ID and password
-        val loginDetails = bankScreens.loginScreen() // Assuming this returns an array with userId and password
-        val userId = loginDetails[0] // Convert userId to Int
+        val loginDetails = bankScreens.loginScreen() //returns an array with userId and password
+        val userId = loginDetails[0] as Int
         val password = loginDetails[1] as String
 
         // Check if userId is valid
@@ -98,6 +99,10 @@ class BankApp {
 
     }
 
+    private fun logOut() {
+        init()
+    }
+
     private fun runBank() {
 
         // Until a number of 0 - 4 is entered, it will keep running bankAppScreen()
@@ -110,6 +115,7 @@ class BankApp {
                 2 -> handleDeposit() //Deposit
                 3 -> handleWithdraw() // withdraw
                 4 -> handleShowAccountDetails() // account details
+                0 -> logOut()
             }
         } while (selection !in 0..4)
     }
@@ -134,15 +140,16 @@ class BankApp {
     }
 
     private fun handleWithdraw() {
-        val amount = bankScreens.withdrawScreen(currentUser)
+        val amount = bankScreens.withdrawScreen(currentUser) // Gets withdraw amount
+
 
         if (amount > 0) {
-            currentUser.balance -= amount
+            currentUser.balance -= amount // removed entered amount from current balance
             println("Successfully withdrawed \$${amount}.")
 
-            accountHandler0.saveUsers(filePath)
+            accountHandler0.saveUsers(filePath) // saves file
 
-            runBank()
+            runBank() // brings you back to the bank
         } else {
             println("Invalid withdraw amount. Please enter a positive number.")
             handleWithdraw()
