@@ -100,7 +100,12 @@ class AccountHandler {
             addAll(loadedUsers) // adds all elements from loadedUsers to the now empty userList
         }
 
-        println("Loaded ${userList.size} users")
+        //println("Loaded ${userList.size} users")
+    }
+
+    fun listUsers(filePath: String) {
+        loadUsers(filePath)
+        println("There is ${userList.size} registered Users")
     }
 
 
